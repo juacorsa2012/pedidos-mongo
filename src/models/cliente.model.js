@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import * as Mensaje from './config/mensajes.js'
+import * as Mensaje from '../config/mensajes.js'
 
 const clienteSchema = new mongoose.Schema(
 {
