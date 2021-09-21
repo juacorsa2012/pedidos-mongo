@@ -1,7 +1,17 @@
 const ROL_ADMIN = 'admin'
-const ROL_USER  = 'usuario'
+const ROL_USER  = 'user'
+const ESTADO_PEDIDO    = 'P'
+const ESTADO_PREPARADO = 'PR'
+const ESTADO_ENTREGADO = 'E'
+const ESTADO_FACTURADO = 'F'
+const ESTADO_DEVUELTO  = 'D'
 
 export {
   ROL_ADMIN,
-  ROL_USER
+  ROL_USER,
+  ESTADO_PEDIDO,
+  ESTADO_DEVUELTO,
+  ESTADO_ENTREGADO,
+  ESTADO_PREPARADO,
+  ESTADO_FACTURADO
 }

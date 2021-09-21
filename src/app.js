@@ -6,6 +6,7 @@ import ErrorResponse from './utils/errorResponse.js'
 import errorHandler from './middlewares/error.js'
 import clienteRoutes from './routes/clientes.route.js'
 import proveedorRoutes from './routes/proveedores.routes.js'
+import usuarioRoutes from './routes/usuarios.routes.js'
 
 const app = express()
 
@@ -18,6 +19,7 @@ conectarDB(config.DB)
 
 app.use('/api/v1/clientes', clienteRoutes)
 app.use('/api/v1/proveedores', proveedorRoutes)
+app.use('/api/v1/usuarios', usuarioRoutes)
 
 app.all('*', (req, res, next) => {
   next(new ErrorResponse(`Imposible encontrar ${req.originalUrl} en este servidor!`, StatusCode.NOT_FOUND))

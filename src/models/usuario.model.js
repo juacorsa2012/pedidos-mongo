@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import validator from 'validator'
 import bcrypt  from 'bcryptjs'
 import * as Mensaje from '../config/mensajes.js'
-import * as Constante from './config/constantes.js'
+import * as Constante from '../config/constantes.js'
 
 const usuarioSchema = new mongoose.Schema(
 {
@@ -16,14 +16,14 @@ const usuarioSchema = new mongoose.Schema(
         type: String,
         required: [true, Mensaje.EMAIL_REQUERIDO],      
         unique: true,
-        lowercase: true,
+        lowercase: true,        
         validate: [validator.isEmail, Mensaje.EMAIL_NO_VALIDO]
     },
 
     password: {
         type: String,
-        required: [true, Mensaje.EMAIL_REQUERIDO],             
-        minlength: [8, Mensaje.EMAIL_NO_VALIDO],
+        required: [true, Mensaje.PASSWORD_REQUERIDO],             
+        minlength: [8, Mensaje.PASSWORD_CORTO   ],
         select: false
     },
 

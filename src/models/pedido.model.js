@@ -1,16 +1,18 @@
 import mongoose from 'mongoose'
-import * as Mensaje from './config/mensajes.js'
+import { PRODUCTO_REQUERIDO, UNIDADES_REQUERIDO, CLIENTE_REQUERIDO } from '../config/mensajes.js'
+import { ESTADO_DEVUELTO, ESTADO_ENTREGADO, ESTADO_FACTURADO, 
+         ESTADO_PEDIDO, ESTADO_PREPARADO } from '../config/constantes.js'
 
 const pedidoSchema = new mongoose.Schema(
 {
   producto: {
     type: String,
-    required: [true, Mensaje.PRODUCTO_REQUERIDO],    
+    required: [true, PRODUCTO_REQUERIDO],    
     trim: true            
   },
   unidades: {
     type: Number,
-    required: [true, Mensaje.UNIDADES_REQUERIDO]
+    required: [true, UNIDADES_REQUERIDO]
   },
   referencia: {
     type: String,    
@@ -30,8 +32,8 @@ const pedidoSchema = new mongoose.Schema(
   },
   estado: {
     type: String,
-    enum : ['pedido','preparado','entregado','facturado','devuelto'],
-    default: 'pedido' 
+    enum : [ESTADO_PEDIDO, ESTADO_PREPARADO, ESTADO_ENTREGADO, ESTADO_FACTURADO, ESTADO_DEVUELTO],
+    default: ESTADO_PEDIDO
   },
   created_at: {
     type: Date,
@@ -41,12 +43,12 @@ const pedidoSchema = new mongoose.Schema(
   cliente: {
     type: mongoose.Schema.ObjectId,
     ref: 'Cliente',
-    required: [true, Mensaje.CLIENTE_REQUERIDO]
+    required: [true, CLIENTE_REQUERIDO]
   },
   proveedor: {
     type: mongoose.Schema.ObjectId,
     ref: 'Proveedor',
-    required: [true, Mensaje.PROVEEDOR_REQUERIDO]
+    required: [true, PRODUCTO_REQUERIDO]
   }
 })
 
