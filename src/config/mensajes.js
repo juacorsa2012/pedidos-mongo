@@ -18,6 +18,10 @@ const PROVEEDOR_ACTUALIZADO   = 'Proveedor actualizado correctamente'
 const EMAIL_NO_VALIDO         = 'El email no tiene un formato válido'
 const CREDENCIALES_INCORRECTAS = 'Las credenciales no son correctas. Por favor vuelva a intentarlo.'
 const INICIAR_SESION           = 'Debe iniciar sesión para poder completar la acción requerida'
+const PEDIDO_REGISTRADO        = 'Pedido registrado correctamente'
+const PEDIDO_ACTUALIZADO       = 'Pedido actualizado correctamente'
+const PEDIDO_ELIMINADO         = 'Pedido eliminado correctamente'
+const PEDIDO_NO_ENCONTRADO     = 'Pedido no encontrado'
 
 export {
   SUCCESS,
@@ -39,5 +43,9 @@ export {
   EMAIL_REQUERIDO,
   EMAIL_NO_VALIDO,
   CREDENCIALES_INCORRECTAS,
-  INICIAR_SESION
+  INICIAR_SESION,
+  PEDIDO_ACTUALIZADO,
+  PEDIDO_ELIMINADO,
+  PEDIDO_REGISTRADO,
+  PEDIDO_NO_ENCONTRADO
 }
