@@ -45,7 +45,7 @@ const login = asyncHandler(async (req, res, next) => {
     })
 })
 
-const protegido = asyncHandler(async (req, res, next) => {    
+const checkAuth = asyncHandler(async (req, res, next) => {    
     let token
 
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
@@ -68,7 +68,7 @@ const protegido = asyncHandler(async (req, res, next) => {
     next()
 })
 
-const rol = (...roles) => {
+const checkRol = (...roles) => {
     return (req, res, next) => {      
       if (!roles.includes(req.usuario.rol)) {
         return next(new ErrorResponse(message.SIN_PERMISOS, statusCode.UNAUTHORIZED));
@@ -79,7 +79,7 @@ const rol = (...roles) => {
 
 export {
     registro,
-    login,
-    protegido,
-    rol
+    login,    
+    checkAuth,
+    checkRol
 }

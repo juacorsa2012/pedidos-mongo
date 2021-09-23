@@ -4,6 +4,7 @@ import Proveedor from '../models/proveedor.model.js'
 import asyncHandler from '../middlewares/async.js'
 import ErrorResponse from '../utils/errorResponse.js'
 import Features from '../utils/Features.js'
+import Pedido from '../models/pedido.model.js'
 
 const obtenerProveedores = asyncHandler(async (req, res) => {    
   const features = new Features(Proveedor.find(), req.query)
@@ -19,6 +20,24 @@ const obtenerProveedores = asyncHandler(async (req, res) => {
     data   : { proveedores }
   })
 })
+
+const obtenerPedidosProveedor = asyncHandler(async (req, res) => {  
+  const { id } = req.params
+
+  const features = new Features(Pedido.find({proveedor: mongoose.Types.ObjectId(id)}).populate('proveedor cliente'), req.query)
+    .filter()
+    .sort()  
+    .paginate()
+
+  const pedidos = await features.query
+  
+  res.status(StatusCode.OK).json({
+    status : SUCCESS,
+    results: pedidos.length,
+    data   : { pedidos }
+  })
+})
+
 
 const registrarProveedor = asyncHandler(async (req, res, next) => {    
   const proveedor = await Proveedor.create(req.body)  
@@ -75,6 +94,7 @@ const contarProveedores = asyncHandler(async (req, res, next) => {
 export {
   obtenerProveedor,
   obtenerProveedores,
+  obtenerPedidosProveedor,
   registrarProveedor,
   actualizarProveedor,
   contarProveedores

@@ -6,6 +6,7 @@ const router = express.Router()
 router.get('/count', controller.contarClientes)
 router.get('/', controller.obtenerClientes)
 router.get('/:id', controller.obtenerCliente)
+router.get('/:id/pedidos', controller.obtenerPedidosCliente)
 router.post('', controller.registrarCliente)
 router.put('/:id', controller.actualizarCliente)
 
