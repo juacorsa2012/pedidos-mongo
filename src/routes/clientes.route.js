@@ -1,14 +1,16 @@
 import express from 'express'
-import * as controller from '../controllers/clientes.controller.js'
+import { actualizarCliente, contarClientes, obtenerCliente, obtenerClientes, 
+         obtenerPedidosCliente, registrarCliente, } from '../controllers/clientes.controller.js'
+import { checkAuth, checkRol } from '../controllers/auth.controller.js'
 
 const router = express.Router()
 
-router.get('/count', controller.contarClientes)
-router.get('/', controller.obtenerClientes)
-router.get('/:id', controller.obtenerCliente)
-router.get('/:id/pedidos', controller.obtenerPedidosCliente)
-router.post('', controller.registrarCliente)
-router.put('/:id', controller.actualizarCliente)
+router.get('/count', contarClientes)
+router.get('/', checkAuth, checkRol('admin', 'user'), obtenerClientes)
+router.get('/:id', obtenerCliente)
+router.get('/:id/pedidos', obtenerPedidosCliente)
+router.post('', registrarCliente)
+router.put('/:id', actualizarCliente)
 
 export default router
 

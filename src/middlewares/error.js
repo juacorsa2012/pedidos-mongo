@@ -1,6 +1,6 @@
 import StatusCode  from 'http-status-codes'
 import ErrorResponse from '../utils/errorResponse.js'
-import * as Mensaje from '../config/mensajes.js'
+import { INICIAR_SESION, INTERNAL_SERVER_ERROR } from '../config/mensajes.js'
 
 const errorHandler = (err, req, res, next) => {
   let error = { ...err }  
@@ -16,6 +16,10 @@ const errorHandler = (err, req, res, next) => {
     const message = `${errors.join('.')}`
     error = new ErrorResponse(message, StatusCode.BAD_REQUEST)
   }
+
+  if (err.name === 'JsonWebTokenError') {           
+    error = new ErrorResponse(INICIAR_SESION, StatusCode.UNAUTHORIZED)
+  }
   
   if (err.code === 11000) {  
     const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0]    
@@ -24,8 +28,8 @@ const errorHandler = (err, req, res, next) => {
   }
 
   res.status(error.statusCode || StatusCode.INTERNAL_SERVER_ERROR).json({
-    success: false,
-    error: error.message || Mensaje.INTERNAL_SERVER_ERROR
+    success: true,
+    error: error.message || INTERNAL_SERVER_ERROR
   })
 }
 

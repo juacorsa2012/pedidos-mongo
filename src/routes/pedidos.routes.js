@@ -1,13 +1,14 @@
 import express from 'express'
-import * as controller from '../controllers/pedidos.controller.js'
+import { actualizarPedido, eliminarPedido, obtenerPedido, obtenerPedidos, 
+         registrarPedido }  from '../controllers/pedidos.controller.js'
 
 const router = express.Router()
 
-router.get('', controller.obtenerPedidos)
-router.get('/:id', controller.obtenerPedido)
-router.post('', controller.registrarPedido)
-router.put('/:id', controller.actualizarPedido)
-router.delete('/:id', controller.eliminarPedido)
+router.get('', obtenerPedidos)
+router.get('/:id', obtenerPedido)
+router.post('', registrarPedido)
+router.put('/:id', actualizarPedido)
+router.delete('/:id', eliminarPedido)
 
 export default router
 

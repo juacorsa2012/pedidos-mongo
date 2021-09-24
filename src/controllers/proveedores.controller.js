@@ -1,5 +1,5 @@
 import StatusCode from 'http-status-codes'
-import * as Mensaje from '../config/mensajes.js'
+import { PROVEEDOR_ACTUALIZADO, PROVEEDOR_NO_ENCONTRADO, PROVEEDOR_REGISTRADO, SUCCESS } from '../config/mensajes.js'
 import Proveedor from '../models/proveedor.model.js'
 import asyncHandler from '../middlewares/async.js'
 import ErrorResponse from '../utils/errorResponse.js'
@@ -15,7 +15,7 @@ const obtenerProveedores = asyncHandler(async (req, res) => {
   const proveedores = await features.query
   
   res.status(StatusCode.OK).json({
-    status : Mensaje.SUCCESS,
+    status : SUCCESS,
     results: proveedores.length,
     data   : { proveedores }
   })
@@ -43,8 +43,8 @@ const registrarProveedor = asyncHandler(async (req, res, next) => {
   const proveedor = await Proveedor.create(req.body)  
     
   res.status(StatusCode.CREATED).json({
-    status : Mensaje.SUCCESS,
-    message: Mensaje.PROVEEDOR_REGISTRADO,
+    status : SUCCESS,
+    message: PROVEEDOR_REGISTRADO,
     data   : { proveedor }
   })        
 })
@@ -53,11 +53,11 @@ const obtenerProveedor = asyncHandler(async (req, res, next) => {
   const proveedor = await Proveedor.findById(req.params.id)
 
   if (!proveedor) {     
-    return next(new ErrorResponse(Mensaje.PROVEEDOR_NO_ENCONTRADO, StatusCode.NOT_FOUND))
+    return next(new ErrorResponse(PROVEEDOR_NO_ENCONTRADO, StatusCode.NOT_FOUND))
   }   
        
   res.status(StatusCode.OK).json({
-    status: Mensaje.SUCCESS,
+    status: SUCCESS,
     data  : { proveedor }
   })  
 })
@@ -67,7 +67,7 @@ const actualizarProveedor = asyncHandler(async (req, res, next) => {
   let proveedor = await Proveedor.findById(id)
 
   if (!proveedor) {
-    return next(new ErrorResponse(Mensaje.PROVEEDOR_NO_ENCONTRADO, StatusCode.NOT_FOUND))
+    return next(new ErrorResponse(PROVEEDOR_NO_ENCONTRADO, StatusCode.NOT_FOUND))
   }
     
   proveedor = await Proveedor.findByIdAndUpdate(id, req.body, {
@@ -76,8 +76,8 @@ const actualizarProveedor = asyncHandler(async (req, res, next) => {
   })  
           
   res.status(StatusCode.OK).json({
-    status : Mensaje.SUCCESS,
-    message: Mensaje.PROVEEDOR_ACTUALIZADO,
+    status : SUCCESS,
+    message: PROVEEDOR_ACTUALIZADO,
     data   : { proveedor }
   })         
 })
@@ -86,7 +86,7 @@ const contarProveedores = asyncHandler(async (req, res, next) => {
   const count = await Proveedor.countDocuments()
 
   res.status(StatusCode.OK).json({
-    status: Mensaje.SUCCESS,
+    status: SUCCESS,
     data: { count }
   })           
 })

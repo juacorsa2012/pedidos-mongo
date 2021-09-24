@@ -1,14 +1,15 @@
 import express from 'express'
-import * as controller from '../controllers/proveedores.controller.js'
+import { actualizarProveedor, contarProveedores, obtenerPedidosProveedor, 
+         obtenerProveedor, obtenerProveedores, registrarProveedor } from '../controllers/proveedores.controller.js'
 
 const router = express.Router()
 
-router.get('/count', controller.contarProveedores)
-router.get('/', controller.obtenerProveedores)
-router.get('/:id', controller.obtenerProveedor)
-router.get('/:id/pedidos', controller.obtenerPedidosProveedor)
-router.post('', controller.registrarProveedor)
-router.put('/:id', controller.actualizarProveedor)
+router.get('/count', contarProveedores)
+router.get('/', obtenerProveedores)
+router.get('/:id', obtenerProveedor)
+router.get('/:id/pedidos', obtenerPedidosProveedor)
+router.post('', registrarProveedor)
+router.put('/:id', actualizarProveedor)
 
 export default router
 
