@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import Cliente from '../models/cliente.model.js'
-import * as config from '../config/config.js'
+import { DB } from '../config/config.js'
 
 const seedClientes = async (docs) => {
   try {        
@@ -17,7 +17,7 @@ const seedClientes = async (docs) => {
 }
 
 const n = +process.argv[2]
-mongoose.connect(config.DB)
+mongoose.connect(DB)
 
 console.log(`Cargando ${n} clientes...`)
 

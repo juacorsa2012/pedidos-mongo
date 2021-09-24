@@ -8,7 +8,8 @@
     "dev": "cross-env NODE_ENV=development nodemon src/server.js",
     "start": "cross-env NODE_ENV=production node src/server.js",
     "seed-clientes": "cross-env NODE_ENV=development node src/seed/seed-clientes.js 100",
-    "seed-proveedores": "cross-env NODE_ENV=development node src/seed/seed-proveedores.js 100"
+    "seed-proveedores": "cross-env NODE_ENV=development node src/seed/seed-proveedores.js 100",
+    "seed-pedidos": "cross-env NODE_ENV=development node src/seed/seed-pedidos.js 5"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,8 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "nodemon": "^2.0.12"
+    "faker": "^5.5.3",
+    "nodemon": "^2.0.12",
+    "sleep": "^6.3.0"
   }
 }

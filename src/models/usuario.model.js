@@ -1,36 +1,36 @@
 import mongoose from 'mongoose'
 import validator from 'validator'
 import bcrypt  from 'bcryptjs'
-import * as Mensaje from '../config/mensajes.js'
-import * as Constante from '../config/constantes.js'
+import { EMAIL_NO_VALIDO, EMAIL_REQUERIDO, NOMBRE_REQUERIDO, PASSWORD_CORTO, PASSWORD_REQUERIDO } from '../config/mensajes.js'
+import { ROL_ADMIN, ROL_USER} from '../config/constantes.js'
 
 const usuarioSchema = new mongoose.Schema(
 {
     nombre: {
         type: String,
-        required: [true, Mensaje.NOMBRE_REQUERIDO],      
+        required: [true, NOMBRE_REQUERIDO],      
         trim: true
     },
     
     email: {
         type: String,
-        required: [true, Mensaje.EMAIL_REQUERIDO],      
+        required: [true, EMAIL_REQUERIDO],      
         unique: true,
         lowercase: true,        
-        validate: [validator.isEmail, Mensaje.EMAIL_NO_VALIDO]
+        validate: [validator.isEmail, EMAIL_NO_VALIDO]
     },
 
     password: {
         type: String,
-        required: [true, Mensaje.PASSWORD_REQUERIDO],             
-        minlength: [8, Mensaje.PASSWORD_CORTO   ],
+        required: [true, PASSWORD_REQUERIDO],             
+        minlength: [8, PASSWORD_CORTO],
         select: false
     },
 
     rol: {
         type: String,
-        enum: [Constante.ROL_ADMIN, Constante.ROL_USER],
-        default: Constante.ROL_USER
+        enum: [ROL_ADMIN, ROL_USER],
+        default: ROL_USER
     },   
     
     created_at: {
