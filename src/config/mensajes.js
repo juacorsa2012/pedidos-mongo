@@ -23,6 +23,7 @@ const PEDIDO_REGISTRADO        = 'Pedido registrado correctamente'
 const PEDIDO_ACTUALIZADO       = 'Pedido actualizado correctamente'
 const PEDIDO_ELIMINADO         = 'Pedido eliminado correctamente'
 const PEDIDO_NO_ENCONTRADO     = 'Pedido no encontrado'
+const DEMASIADAS_PETICIONES    = 'Se ha alcanzado el número máximo de peticiones permitidas'
 
 export {
   SUCCESS,
@@ -49,5 +50,6 @@ export {
   PEDIDO_ACTUALIZADO,
   PEDIDO_ELIMINADO,
   PEDIDO_REGISTRADO,
-  PEDIDO_NO_ENCONTRADO
+  PEDIDO_NO_ENCONTRADO,
+  DEMASIADAS_PETICIONES
 }
