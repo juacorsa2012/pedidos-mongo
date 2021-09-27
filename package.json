@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type": "module",
+  "type": "module", 
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/server.js",
     "start": "cross-env NODE_ENV=production node src/server.js",
     "seed-clientes": "cross-env NODE_ENV=development node src/seed/seed-clientes.js 100",
     "seed-proveedores": "cross-env NODE_ENV=development node src/seed/seed-proveedores.js 100",
-    "seed-pedidos": "cross-env NODE_ENV=development node src/seed/seed-pedidos.js 5"
+    "seed-pedidos": "cross-env NODE_ENV=development node src/seed/seed-pedidos.js 100",    
+    "test": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
   },
   "repository": {
     "type": "git",
@@ -41,7 +42,9 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "faker": "^5.5.3",
+    "jest": "^27.2.2",
     "nodemon": "^2.0.12",
-    "sleep": "^6.3.0"
+    "sleep": "^6.3.0",
+    "supertest": "^6.1.6"
   }
 }

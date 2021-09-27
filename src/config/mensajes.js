@@ -24,6 +24,7 @@ const PEDIDO_ACTUALIZADO       = 'Pedido actualizado correctamente'
 const PEDIDO_ELIMINADO         = 'Pedido eliminado correctamente'
 const PEDIDO_NO_ENCONTRADO     = 'Pedido no encontrado'
 const DEMASIADAS_PETICIONES    = 'Se ha alcanzado el número máximo de peticiones permitidas'
+const USUARIO_REQUERIDO        = 'El usuario es un campo requerido'
 
 export {
   SUCCESS,
@@ -51,5 +52,6 @@ export {
   PEDIDO_ELIMINADO,
   PEDIDO_REGISTRADO,
   PEDIDO_NO_ENCONTRADO,
-  DEMASIADAS_PETICIONES
+  DEMASIADAS_PETICIONES,
+  USUARIO_REQUERIDO
 }
