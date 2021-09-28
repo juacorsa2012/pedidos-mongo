@@ -28,7 +28,7 @@ const errorHandler = (err, req, res, next) => {
   }
 
   res.status(error.statusCode || StatusCode.INTERNAL_SERVER_ERROR).json({
-    success: true,
+    success: false,
     error: error.message || INTERNAL_SERVER_ERROR
   })
 }

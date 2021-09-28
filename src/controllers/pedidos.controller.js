@@ -6,6 +6,7 @@ import Pedido from '../models/pedido.model.js'
 import asyncHandler from '../middlewares/async.js'
 import ErrorResponse from '../utils/errorResponse.js'
 import Features from '../utils/Features.js'
+import { checkAuth, checkRol } from '../controllers/auth.controller.js'
 
 const obtenerPedidos = asyncHandler(async (req, res) => { 
   const page  = req.params.page  || null

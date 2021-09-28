@@ -6,7 +6,7 @@ import { checkAuth, checkRol } from '../controllers/auth.controller.js'
 const router = express.Router()
 
 router.get('/count', contarClientes)
-router.get('/', checkAuth, checkRol('admin', 'user'), obtenerClientes)
+router.get('/',  obtenerClientes)
 router.get('/:id', obtenerCliente)
 router.get('/:id/pedidos', obtenerPedidosCliente)
 router.post('', registrarCliente)

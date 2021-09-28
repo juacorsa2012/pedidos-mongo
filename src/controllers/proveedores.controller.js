@@ -5,6 +5,7 @@ import asyncHandler from '../middlewares/async.js'
 import ErrorResponse from '../utils/errorResponse.js'
 import Features from '../utils/Features.js'
 import Pedido from '../models/pedido.model.js'
+import { checkAuth, checkRol } from '../controllers/auth.controller.js'
 
 const obtenerProveedores = asyncHandler(async (req, res) => {    
   const features = new Features(Proveedor.find(), req.query)
