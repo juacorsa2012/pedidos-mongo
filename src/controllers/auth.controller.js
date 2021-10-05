@@ -72,7 +72,7 @@ const checkAuth = asyncHandler(async (req, res, next) => {
 const checkRol = (...roles) => {
     return (req, res, next) => {      
       if (!roles.includes(req.usuario.rol)) {
-        return next(new ErrorResponse(SIN_PERMISOS, StatusCode.UNAUTHORIZED));
+        return next(new ErrorResponse(SIN_PERMISOS, StatusCode.UNAUTHORIZED))
       }  
       next()
     }

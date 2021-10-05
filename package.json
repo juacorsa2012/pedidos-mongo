@@ -10,7 +10,11 @@
     "seed-clientes": "cross-env NODE_ENV=development node src/seed/seed-clientes.js 100",
     "seed-proveedores": "cross-env NODE_ENV=development node src/seed/seed-proveedores.js 100",
     "seed-pedidos": "cross-env NODE_ENV=development node src/seed/seed-pedidos.js 100",    
-    "test": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
+    "test": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+
+    "test-clientes-controller": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js cliente.controller.test.js",
+    "test-proveedores-controller": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js proveedor.controller.test.js",
+    "test-pedidos-controller": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js pedidos.controller.test.js --watch"
   },
   "repository": {
     "type": "git",

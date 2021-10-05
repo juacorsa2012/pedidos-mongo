@@ -1,7 +1,7 @@
 import StatusCode from 'http-status-codes'
 import { SUCCESS, PEDIDO_NO_ENCONTRADO, PEDIDO_REGISTRADO, 
          PROVEEDOR_NO_ENCONTRADO, CLIENTE_NO_ENCONTRADO, 
-         PEDIDO_ELIMINADO, PEDIDO_ACTUALIZADO } from '../config/mensajes.js'
+         PEDIDO_ELIMINADO, PEDIDO_ACTUALIZADO, PROVEEDOR_REQUERIDO, CLIENTE_REQUERIDO } from '../config/mensajes.js'
 import Pedido from '../models/pedido.model.js'
 import asyncHandler from '../middlewares/async.js'
 import ErrorResponse from '../utils/errorResponse.js'
@@ -34,11 +34,11 @@ const registrarPedido = asyncHandler(async (req, res, next) => {
   const { cliente, proveedor } = req.body
 
   if (!proveedor) {
-    return next(new ErrorResponse(PROVEEDOR_NO_ENCONTRADO, StatusCode.NOT_FOUND))
+    return next(new ErrorResponse(PROVEEDOR_REQUERIDO, StatusCode.BAD_REQUEST))
   }
 
   if (!cliente) {
-    return next(new ErrorResponse(CLIENTE_NO_ENCONTRADO, StatusCode.NOT_FOUND))
+    return next(new ErrorResponse(CLIENTE_REQUERIDO, StatusCode.BAD_REQUEST))
   }
   
   const pedido = await Pedido.create(req.body)  
@@ -64,11 +64,21 @@ const obtenerPedido = asyncHandler(async (req, res, next) => {
 })
 
 const actualizarPedido = asyncHandler(async (req, res, next) => {  
-  const id = req.params.id   
+  const {cliente, proveedor} = req.body
+  const {id} = req.params
+    
   let pedido = await Pedido.findById(id)
 
   if (!pedido) {
     return next(new ErrorResponse(PEDIDO_NO_ENCONTRADO, StatusCode.NOT_FOUND))
+  }
+
+  if (!proveedor) {
+    return next(new ErrorResponse(PROVEEDOR_REQUERIDO, StatusCode.BAD_REQUEST))
+  }
+
+  if (!cliente) {
+    return next(new ErrorResponse(CLIENTE_REQUERIDO, StatusCode.BAD_REQUEST))
   }
     
   pedido = await Pedido.findByIdAndUpdate(id, req.body, {
@@ -107,3 +117,5 @@ export {
   actualizarPedido,
   eliminarPedido
 }
+
+
