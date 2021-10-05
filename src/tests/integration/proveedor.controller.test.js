@@ -7,7 +7,7 @@ import { NOMBRE_REQUERIDO, PROVEEDOR_ACTUALIZADO, PROVEEDOR_REGISTRADO, SUCCESS 
 
 const url = '/api/v1/proveedores/'
 
-describe('${url}', () => {
+describe(`${url}`, () => {
   let proveedor1 
   let proveedor2
 

@@ -14,7 +14,8 @@
 
     "test-clientes-controller": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js cliente.controller.test.js",
     "test-proveedores-controller": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js proveedor.controller.test.js",
-    "test-pedidos-controller": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js pedidos.controller.test.js --watch"
+    "test-pedidos-controller": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js pedidos.controller.test.js --watch",
+    "test-auth-controller": "cross-env NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js auth.controller.test.js --watch"
   },
   "repository": {
     "type": "git",
